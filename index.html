@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>夏祭り背景</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #ff9933, #ff6666, #9933cc, #333399, #001f3f);
+      background-attachment: fixed;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+      color: white;
+      font-family: 'sans-serif';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 3rem;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    /* 提灯（ふわっと光る） */
+    .lantern {
+      position: absolute;
+      width: 40px;
+      height: 60px;
+      background: radial-gradient(circle, #ff4444, #cc0000);
+      border-radius: 50% 50% 40% 40%;
+      box-shadow: 0 0 20px rgba(255, 100, 100, 0.7);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .lantern::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 10px;
+      background: #333;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px rgba(255, 80, 80, 0.5);
+      }
+      to {
+        box-shadow: 0 0 30px rgba(255, 150, 150, 0.9);
+      }
+    }
+
+    /* 花火 */
+    .firework {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: yellow;
+      border-radius: 50%;
+      animation: rise 3s ease-out infinite;
+    }
+
+    @keyframes rise {
+      0% {
+        bottom: 0;
+        opacity: 0;
+        transform: translateX(0);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: translateX(calc(-50px + 100px * random()));
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>夏祭りへようこそ！</h1>
+
+  <!-- 提灯を複数配置 -->
+  <div class="lantern" style="top: 20px; left: 20px;"></div>
+  <div class="lantern" style="top: 40px; left: 80px;"></div>
+  <div class="lantern" style="top: 30px; right: 60px;"></div>
+  <div class="lantern" style="top: 50px; right: 120px;"></div>
+
+  <!-- 花火を複数 -->
+  <div class="firework" style="left: 40%; animation-delay: 0s;"></div>
+  <div class="firework" style="left: 60%; animation-delay: 1s;"></div>
+  <div class="firework" style="left: 50%; animation-delay: 2s;"></div>
+</body>
+</html>
